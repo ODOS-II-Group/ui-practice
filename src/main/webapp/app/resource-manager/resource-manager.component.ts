@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Principal } from '../shared';
 import { ResourceManagerService } from './resource-manager.service';
 
 @Component({
@@ -10,14 +9,15 @@ import { ResourceManagerService } from './resource-manager.service';
   ]
 })
 export class ResourceManagerComponent implements OnInit {
-  
-  constructor( private conferenceRoomService:ResourceManagerService) { }
-  selectedResource:string;
-  buildingsData:any;
-  conferenceRoomsData:any;
-  equipmentsData:any;
 
-  resources = ["Building", "Conference Room", "Equipment"];
+    selectedResource: string;
+    buildingsData: any;
+    conferenceRoomsData: any;
+    equipmentsData: any;
+    resources = ["Building", "Conference Room", "Equipment"];
+
+  constructor( private conferenceRoomService:ResourceManagerService) { }
+
   ngOnInit() {
      this.selectedResource = this.resources[0];
      this.getAllBuildings();
@@ -32,7 +32,7 @@ export class ResourceManagerComponent implements OnInit {
           (error) => {
               console.log(error);
           }
-      )  
+      )
   }
   getAllConferenceRooms(){
     this.conferenceRoomService.getAllConferenceData().subscribe(
@@ -42,7 +42,7 @@ export class ResourceManagerComponent implements OnInit {
         (error) => {
             console.log(error);
         }
-    )  
+    )
   }
   getAllEquipmentRooms(){
     this.conferenceRoomService.getAllEquipmentData().subscribe(
@@ -52,6 +52,6 @@ export class ResourceManagerComponent implements OnInit {
         (error) => {
             console.log(error);
         }
-    )  
+    )
   }
 }

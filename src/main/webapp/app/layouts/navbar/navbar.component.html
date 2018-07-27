@@ -30,6 +30,18 @@
                     </span>
                 </a>
             </li>
+
+            <li *ngSwitchCase="true"  routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link "  routerLink="roomissues" id="entity-menu3">
+                    <span>
+                        <i class="fa fa-th-list" aria-hidden="true"></i>
+                        <span>
+                            Room Issues
+                        </span>
+                    </span>
+                </a>
+            </li>
+
             <li *ngSwitchCase="true"  routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link " routerLink="resourcemanagment" id="entity-menu2">
                     <span>

@@ -19,17 +19,21 @@
                             <span>Comment</span>
                         </th>
                         <th jhisortby="build-modif" ng-reflect-jhi-sort-by="build-modif">
-                            <span>Status</span>
+                            <span>Current Status</span>
+                        </th>
+                        <th jhisortby="build-modif" ng-reflect-jhi-sort-by="build-modif">
+                            <span>Change Status</span>
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>1</td>
+                <tr *ngFor="let issue of allIssues">
+                    <td>{{ issue.conferenceRoomId }}</td>
                     <td>Washington</td>
-                    <td>The projector does not work</td>
+                    <td>{{ issue.comment }}</td>
+                    <td>{{ issue.status }}</td>
                     <td>
-                        <select class="selectpicker" name="issueStatus" id="issueStatus" [(ngModel)]="defaultIssueStatus" (change)="statuschange($event.target.value)">
+                        <select class="selectpicker" name="issueStatus" id="issueStatus" [(ngModel)]="defaultIssueStatus" (change)="statuschange($event.target.value, issue)">
                             <option selected="selected" *ngFor="let issueStatus of issueStatusOptions" [ngValue]="issueStatus" >
                             {{ issueStatus }}
                             </option>

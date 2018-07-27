@@ -1,3 +1,37 @@
-<p>
-  report-issues works!
-</p>
+
+ <div class="breadcrumb breadcrumb-option">
+  <div class="navigation">
+      <div class="nav-variant-breadcrumb">
+          <h2 class="font-weight-bold text-center h1">Report issues</h2>
+      </div>
+  </div>
+</div>
+<div class="col-md-9">
+  <div>
+      <h3>Reservation Details</h3>
+      <form [formGroup]="reportIssuesDetailForm">
+          <div class="personal_details">
+              <div class="form-group planyo-form-item-group  col-md-8" id="row_first">
+                  <label for="firstName" class="control-label">Reporter Full Name<em>*</em></label>
+                  <input class="with-status-border form-control" maxlength="80" type="text" name="name" id="name" formControlName="fullName">
+              </div>
+              <div class="form-group planyo-form-item-group  col-md-8" id="row_last">
+                  <label for="lastName" class="control-label">Date Reported<em>*</em></label>
+                  <input class="with-status-border form-control" maxlength="80" type="date" name="date" id="date" formControlName="reportDate" value="{{ Date.now()}}">
+              </div>
+              <div class="form-group planyo-form-item-group  col-md-8" id="row_email">
+                  <label for="email" class="control-label">Conference Room ID<em>*</em></label>
+                  <input type="email" class="with-status-border form-control" maxlength="80"  name="roomIssues" id="roomIssues" formControlName="roomIssuesID" >
+              </div>
+              <div class="form-group planyo-form-item-group  col-md-8" id="row_conf_Desc">
+                  <label for="conferenceDescription" class="control-label">Issues Details<em>*</em></label>
+                  <textarea type="text" class="with-status-border form-control" maxlength="120" name="reportIssuesDescription" id="reportIssuesDescription" formControlName="reportIssuesDescription"></textarea>
+              </div>
+          </div>
+          <div class="form-button">
+              <label for="submit_form_1">&nbsp;</label>
+              <button style="border-radius: 5px;" type="submit" class="btn btn-primary btn-sm" name="submit_form_1" id="submit_form_1" (click)="SubmitRortIssues()">Continue</button>
+          </div>
+      </form>
+  </div>
+</div>

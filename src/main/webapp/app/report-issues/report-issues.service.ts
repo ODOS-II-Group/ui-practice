@@ -13,4 +13,16 @@ export class ResportIssuesService {
       private $sessionStorage: SessionStorageService
     ) { }
 
+    postReservationData(data: {}){
+        return this.http.post( CRRS_API_URL + 'api/conference-room-schedule', data,
+            {
+                headers: new HttpHeaders(
+                    { 'Authorization': 'Bearer ' + this.getToken(),
+                               'Content-Type': 'application/json' })
+            });
+      };
+
+      getToken() {
+        return this.$localStorage.retrieve('authenticationToken') || this.$sessionStorage.retrieve('authenticationToken');
+    }
 }

@@ -32,8 +32,8 @@
                 <tbody>
                 <tr *ngFor="let issue of allIssues">
                     <td>{{ issue.conferenceRoomId }}</td>
-                    <td>{{ issue.reportDate}}</td>
-                    <td>{{ issue.requestorName}}</td>
+                    <td>{{ issue.reportDate | date }}</td>
+                    <td>{{ issue.requestorName }}</td>
                     <td>{{ issue.comment }}</td>
                     <td>{{ issue.status }}</td>
                     <td>

@@ -10,10 +10,13 @@
                 <thead>
                     <tr jhisort="" ng-reflect-predicate="id" ng-reflect-ascending="true" ng-reflect-callback="function () { [native code] }">
                         <th jhisortby="id" ng-reflect-jhi-sort-by="id">
-                            <span>BuildingID</span>
+                            <span>ConferenceRoomID</span>
                         </th>
                         <th jhisortby="build-name" ng-reflect-jhi-sort-by="build-name">
-                            <span>BuildingName</span>
+                            <span>Date</span>
+                        </th>
+                        <th jhisortby="build-name" ng-reflect-jhi-sort-by="build-name">
+                            <span>Reported</span>
                         </th>
                         <th jhisortby="build-desc" ng-reflect-jhi-sort-by="build-desc">
                             <span>Comment</span>
@@ -29,7 +32,8 @@
                 <tbody>
                 <tr *ngFor="let issue of allIssues">
                     <td>{{ issue.conferenceRoomId }}</td>
-                    <td>Washington</td>
+                    <td>{{ issue.reportDate}}</td>
+                    <td>{{ issue.requestorName}}</td>
                     <td>{{ issue.comment }}</td>
                     <td>{{ issue.status }}</td>
                     <td>

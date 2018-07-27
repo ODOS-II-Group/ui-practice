@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params, Router}  from '@angular/router';
+import { ResportIssuesService } from './report-issues.service';
 import { FormGroup, Validators, FormControl  } from '@angular/forms';
 
 @Component({
@@ -13,7 +15,12 @@ export class ReportIssuesComponent implements OnInit {
     roomIssuesID: FormControl;
     reportIssuesDescription: FormControl;
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private resportIssuesService: ResportIssuesService) {
+    
+   }
 
   ngOnInit() {
 
@@ -25,6 +32,22 @@ export class ReportIssuesComponent implements OnInit {
     });
   }
   SubmitRortIssues(){
-
+    let loadData = {
+      "fullName":this.fullName.value,
+      "reportDate": this.reportDate.value,
+      "roomIssueID": this.roomIssuesID.value,
+      "reportIssuesDescription": this.reportIssuesDescription.value
+    }
+    console.log("Load data ", loadData);
+    this.resportIssuesService.postReportIssuesData(loadData)
+    .subscribe((response)=>{
+        setTimeout((router: Router) => {
+            this.router.navigate(['']);
+        }, 5000);
+    }, (error)=> {
+        setTimeout((router: Router) => {
+            this.router.navigate(['']);
+        }, 2000);
+    } );
   }
 }

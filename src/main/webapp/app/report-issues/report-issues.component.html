@@ -17,7 +17,7 @@
               </div>
               <div class="form-group planyo-form-item-group  col-md-8" id="row_last">
                   <label for="lastName" class="control-label">Date Reported<em>*</em></label>
-                  <input class="with-status-border form-control" maxlength="80" type="date" name="date" id="date" formControlName="reportDate" value="{{ Date.now()}}">
+                  <input class="with-status-border form-control" maxlength="80" type="date" name="date" id="date" formControlName="reportDate" value="{{today | date}}">
               </div>
               <div class="form-group planyo-form-item-group  col-md-8" id="row_email">
                   <label for="email" class="control-label">Conference Room ID<em>*</em></label>
@@ -30,7 +30,7 @@
           </div>
           <div class="form-button">
               <label for="submit_form_1">&nbsp;</label>
-              <button style="border-radius: 5px;" type="submit" class="btn btn-primary btn-sm" name="submit_form_1" id="submit_form_1" (click)="SubmitRortIssues()">Continue</button>
+              <button style="border-radius: 5px;" type="submit" class="btn btn-primary btn-sm" name="submit_form_1" id="submit_form_1" (click)="SubmitRortIssues()">SUBMIT</button>
           </div>
       </form>
   </div>

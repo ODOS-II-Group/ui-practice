@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router}  from '@angular/router';
-import { ResportIssuesService } from './report-issues.service';
+import { ReportIssuesService } from './report-issues.service';
 import { FormGroup, Validators, FormControl  } from '@angular/forms';
 
 @Component({
@@ -14,11 +14,18 @@ export class ReportIssuesComponent implements OnInit {
     reportDate: FormControl;
     roomIssuesID: FormControl;
     reportIssuesDescription: FormControl;
+    today = new Date();
+    roomId: number;
+    sDate: any;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private resportIssuesService: ResportIssuesService) {
+    private reportIssuesService: ReportIssuesService) {
+      this.route.queryParams.subscribe(params => {
+        this.roomId = params['selectedRoom.conferenceRoomId'];
+        console.log(this.roomId); 
+    });
     
    }
 
@@ -29,17 +36,20 @@ export class ReportIssuesComponent implements OnInit {
       reportDate: new FormControl('', Validators.required),
       roomIssuesID: new FormControl('', Validators.required),
       reportIssuesDescription: new FormControl('', Validators.required)
+      
     });
+    this.sDate = this.today.getFullYear() + "-" + (this.today.getMonth())+1 + "-" + this.today.getDate();
   }
   SubmitRortIssues(){
     let loadData = {
-      "fullName":this.fullName.value,
-      "reportDate": this.reportDate.value,
-      "roomIssueID": this.roomIssuesID.value,
-      "reportIssuesDescription": this.reportIssuesDescription.value
+      "comment": this.reportIssuesDetailForm.get('reportIssuesDescription').value,
+      "status": "REPORTED",
+      "requestorName": "Tola",
+      "reportDate": this.sDate,
+      "conferenceRoomId": 2
     }
     console.log("Load data ", loadData);
-    this.resportIssuesService.postReportIssuesData(loadData)
+    this.reportIssuesService.postReportIssuesData(loadData)
     .subscribe((response)=>{
         setTimeout((router: Router) => {
             this.router.navigate(['']);

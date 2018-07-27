@@ -5,7 +5,7 @@ import { LocalStorageService, SessionStorageService} from 'ngx-webstorage';
 
 
 @Injectable()
-export class ResportIssuesService {
+export class ReportIssuesService {
 
   constructor(
       private http: HttpClient,
@@ -13,8 +13,8 @@ export class ResportIssuesService {
       private $sessionStorage: SessionStorageService
     ) { }
 
-    postReservationData(data: {}){
-        return this.http.post( CRRS_API_URL + 'api/conference-room-schedule', data,
+    postReportIssuesData(data: {}){
+        return this.http.post( CRRS_API_URL + 'api/room-equipment-issues', data,
             {
                 headers: new HttpHeaders(
                     { 'Authorization': 'Bearer ' + this.getToken(),

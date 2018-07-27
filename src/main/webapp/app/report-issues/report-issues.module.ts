@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { OdosCrrsUiSharedModule } from '../shared';
 import { REPORTISSUES_ROUTE, ReportIssuesComponent } from '.';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ResportIssuesService } from './report-issues.service';
+import { ReportIssuesService } from './report-issues.service';
 
 
 @NgModule({
@@ -20,7 +20,7 @@ import { ResportIssuesService } from './report-issues.service';
     entryComponents: [
     ],
     providers: [
-        ResportIssuesService
+        ReportIssuesService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

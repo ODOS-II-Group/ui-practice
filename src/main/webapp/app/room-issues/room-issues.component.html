@@ -1,3 +1,43 @@
-<p>
-  room-issues works!
-</p>
+<div class="row">
+    <div class="col-md-12">
+        <h1 style="margin-left: 440px;">Conference Room Issues</h1>
+        <hr>
+    </div>
+    <div class="col-md-12">
+        <h1>Issues</h1>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr jhisort="" ng-reflect-predicate="id" ng-reflect-ascending="true" ng-reflect-callback="function () { [native code] }">
+                        <th jhisortby="id" ng-reflect-jhi-sort-by="id">
+                            <span>BuildingID</span>
+                        </th>
+                        <th jhisortby="build-name" ng-reflect-jhi-sort-by="build-name">
+                            <span>BuildingName</span>
+                        </th>
+                        <th jhisortby="build-desc" ng-reflect-jhi-sort-by="build-desc">
+                            <span>Comment</span>
+                        </th>
+                        <th jhisortby="build-modif" ng-reflect-jhi-sort-by="build-modif">
+                            <span>Status</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Washington</td>
+                    <td>The projector does not work</td>
+                    <td>
+                        <select class="selectpicker" name="issueStatus" id="issueStatus" [(ngModel)]="defaultIssueStatus" (change)="statuschange($event.target.value)">
+                            <option selected="selected" *ngFor="let issueStatus of issueStatusOptions" [ngValue]="issueStatus" >
+                            {{ issueStatus }}
+                            </option>
+                        </select>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

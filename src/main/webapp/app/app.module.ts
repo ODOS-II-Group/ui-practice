@@ -11,6 +11,7 @@ import { AuthExpiredInterceptor } from './blocks/interceptor/auth-expired.interc
 import { ErrorHandlerInterceptor } from './blocks/interceptor/errorhandler.interceptor';
 import { NotificationInterceptor } from './blocks/interceptor/notification.interceptor';
 import { OdosCrrsUiSharedModule, UserRouteAccessService, CapitalizeFirstPipe } from './shared';
+import { OdosCrrsUiReportIssuesModule } from './report-issues/report-issues.module';
 import { OdosCrrsUiAppRoutingModule} from './app-routing.module';
 import { OdosCrrsUiHomeModule } from './home';
 import { OdosCrrsUiConferenceRoomModule } from './conference-room';
@@ -23,6 +24,7 @@ import { OdosCrrsUiEntityModule } from './entities/entity.module';
 import { PaginationConfig } from './blocks/config/uib-pagination.config';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule }  from '@angular/common';
+
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import {
     JhiMainComponent,
@@ -32,6 +34,7 @@ import {
     PageRibbonComponent,
     ErrorComponent
 } from './layouts';
+
 
 
 @NgModule({
@@ -50,7 +53,8 @@ import {
         OdosCrrsUiEntityModule,
         CommonModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        OdosCrrsUiReportIssuesModule
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [

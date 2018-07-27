@@ -17,6 +17,7 @@ import { OdosCrrsUiConferenceRoomModule } from './conference-room';
 import { OdosCrrsUiReservationModule } from './reservation';
 import { OdosCrrsUiReportModule } from "./report";
 import { OdosCrrsUiResourceManagerModule } from "./resource-manager";
+import { OdosCrrsUiRoomIssuesModule } from './room-issues';
 import { OdosCrrsUiAdminModule } from './admin/admin.module';
 import { OdosCrrsUiAccountModule } from './account/account.module';
 import { OdosCrrsUiEntityModule } from './entities/entity.module';
@@ -33,7 +34,6 @@ import {
     ErrorComponent
 } from './layouts';
 
-
 @NgModule({
     imports: [
         BrowserModule,
@@ -43,6 +43,7 @@ import {
         OdosCrrsUiHomeModule,
         OdosCrrsUiConferenceRoomModule,
         OdosCrrsUiReservationModule,
+        OdosCrrsUiRoomIssuesModule,
         OdosCrrsUiResourceManagerModule,
         OdosCrrsUiReportModule,
         OdosCrrsUiAdminModule,

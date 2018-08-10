@@ -54,4 +54,15 @@ export class ResourceManagerComponent implements OnInit {
         }
     )
   }
+  updateFoodSpace(foodspace, id){
+      console.log("FOOD SPACE " + foodspace + " - room id " + id);
+      this.conferenceRoomService.updateFoodSpace(foodspace, id).subscribe(
+          (response) => {
+              console.log("UPDATED CONFERENCE ROOM FOOD SPACE "  + response);
+          },
+          (error) => {
+              console.log(error);
+          }
+      )
+  }
 }

@@ -19,8 +19,8 @@ export class ResourceManagerService {
     return this.http.get(CRRS_API_URL + 'api/conferenceroom');
   }
   updateFoodSpace(foodSpace, id){
-      const data= {"id": id, "foodSpace": foodSpace};
-      return this.http.put(CRRS_API_URL + '/api/conferenceroom', data, {
+      const data= {"conferenceRoomId": id, "foodSpace": foodSpace};
+      return this.http.put(CRRS_API_URL + '/api/conferenceroom_space', data, {
           headers: new HttpHeaders(
               { 'Authorization': 'Bearer ' + this.getToken(),
                         'Content-Type': 'application/json' })

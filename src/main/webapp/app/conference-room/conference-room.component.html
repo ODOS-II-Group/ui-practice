@@ -55,6 +55,19 @@
                     <p>{{ selectedRoom.activeIndicator }}</p>
                 </dd>
             </dl>
+            <div>
+                <dl class="item-property">
+                    <dt style="font-weight: 500;">SPACE FOR FOOD SET UP</dt>
+                    <dd>
+                        <label *ngIf ="isSpaceAvaiable" class="form-check-inline">
+                            YES
+                        </label>
+                        <label *ngIf ="!isSpaceAvaiable" class="form-check-inline">
+                            NO
+                        </label>
+                    </dd>
+                </dl>
+            </div>
 
             <dl class="param param-feature">
                 <dt style="font-weight: 500;">EQUIPMENTS PROVIDED</dt>

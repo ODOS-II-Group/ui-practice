@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router}  from '@angular/router';
 import { ReportIssuesService } from './report-issues.service';
 import { FormGroup, Validators, FormControl  } from '@angular/forms';
+import { LoginService } from '../shared/login/login.service';
 
 @Component({
   selector: 'jhi-report-issues',
@@ -17,19 +18,22 @@ export class ReportIssuesComponent implements OnInit {
     today = new Date();
     roomId: number;
     sDate: any;
+    userName: string;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
+    private loginservice:LoginService,
     private reportIssuesService: ReportIssuesService) {
-      this.route.queryParams.subscribe(params => {
-        this.roomId = params['selectedRoom.conferenceRoomId'];
-        console.log(this.roomId); 
-    });
     
    }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.roomId = params['ID'];
+      console.log("This is room conference ID ", this.roomId);
+      this.userName= MSCredentials.name; 
+    });
 
     this.reportIssuesDetailForm = new FormGroup({
       fullName: new FormControl('', Validators.required),
@@ -46,7 +50,7 @@ export class ReportIssuesComponent implements OnInit {
       "status": "REPORTED",
       "requestorName": "Tola",
       "reportDate": this.sDate,
-      "conferenceRoomId": 2
+      "conferenceRoomId": this.roomId
     }
     console.log("Load data ", loadData);
     this.reportIssuesService.postReportIssuesData(loadData)

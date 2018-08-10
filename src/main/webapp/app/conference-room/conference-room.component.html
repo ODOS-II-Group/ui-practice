@@ -59,10 +59,10 @@
                 <dl class="item-property">
                     <dt style="font-weight: 500;">SPACE FOR FOOD SET UP</dt>
                     <dd>
-                        <label *ngIf ="selectedRoom.foodSpace" class="form-check-inline">
+                        <label *ngIf ="selectedRoom.foodSpace == 'Y'" class="form-check-inline">
                             YES
                         </label>
-                        <label *ngIf ="!selectedRoom.foodSpace" class="form-check-inline">
+                        <label *ngIf ="selectedRoom.foodSpace == 'N'" class="form-check-inline">
                             NO
                         </label>
                     </dd>

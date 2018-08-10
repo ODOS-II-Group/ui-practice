@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="col-md-12">
+        <h1 style="margin-left: 440px;">Conference Room Issues</h1>
+        <hr>
+    </div>
+    <div class="col-md-12">
+        <h1>Issues</h1>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr jhisort="" ng-reflect-predicate="id" ng-reflect-ascending="true" ng-reflect-callback="function () { [native code] }">
+                        <th jhisortby="id" ng-reflect-jhi-sort-by="id">
+                            <span>ConferenceRoomID</span>
+                        </th>
+                        <th jhisortby="build-name" ng-reflect-jhi-sort-by="build-name">
+                            <span>Date</span>
+                        </th>
+                        <th jhisortby="build-name" ng-reflect-jhi-sort-by="build-name">
+                            <span>Reported</span>
+                        </th>
+                        <th jhisortby="build-desc" ng-reflect-jhi-sort-by="build-desc">
+                            <span>Comment</span>
+                        </th>
+                        <th jhisortby="build-modif" ng-reflect-jhi-sort-by="build-modif">
+                            <span>Current Status</span>
+                        </th>
+                        <th jhisortby="build-modif" ng-reflect-jhi-sort-by="build-modif">
+                            <span>Change Status</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let issue of allIssues">
+                    <td>{{ issue.conferenceRoomId }}</td>
+                    <td>{{ issue.reportDate | date }}</td>
+                    <td>{{ issue.requestorName }}</td>
+                    <td>{{ issue.comment }}</td>
+                    <td>{{ issue.status }}</td>
+                    <td>
+                        <select class="selectpicker" name="issueStatus" id="issueStatus" [(ngModel)]="defaultIssueStatus" (change)="statuschange($event.target.value, issue)">
+                            <option selected="selected" *ngFor="let issueStatus of issueStatusOptions" [ngValue]="issueStatus" >
+                            {{ issueStatus }}
+                            </option>
+                        </select>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -81,6 +81,9 @@
               <th jhisortby="conference-capacity" ng-reflect-jhi-sort-by="conference-capacity">
                 <span>Capacity</span>
               </th>
+                <th jhisortby="conference-food-space" ng-reflect-jhi-sort-by="conference-food-space">
+                    <span>Space For Food</span>
+                </th>
             </tr>
           </thead>
           <tbody>
@@ -91,6 +94,13 @@
               <td>{{conferenceRoom['roomName']}}</td>
               <td>{{conferenceRoom['roomNum']}}</td>
               <td>{{conferenceRoom['roomCapacity']}}</td>
+              <td>
+                  <select name="foodspace" id="foodspace" (change)="updateFoodSpace($event.target.value, conferenceRoom['conferenceRoomId'])">
+                      <option value="" selected></option>
+                      <option value="yes">yes</option>
+                      <option value="no">no</option>
+                  </select>
+              </td>
               <td class="text-right">
                 <div class="btn-group flex-btn-group-container">
                   <button class="btn btn-info btn-sm" type="submit" tabindex="0" ng-reflect-router-link="../resource-management,system">

@@ -7,6 +7,7 @@ import {Router, ActivatedRoute, Params, Data, RouterStateSnapshot, ActivatedRout
 import { Account, LoginModalService, Principal } from "../shared";
 import { ConferenceRoomService } from './conference-room.service';
 import {StateStorageService} from "../shared/auth/state-storage.service";
+import {FormControl, FormControlName, FormGroup, Validators} from "@angular/forms";
 
 @Component({
     selector: 'jhi-conference-room',
@@ -27,6 +28,10 @@ export class ConferenceRoomComponent implements OnInit {
     buildingInfo= {};
     selectedRoom: string;
     buildingName: string;
+    displayReport = false;
+    displayReportEntry = false;
+    malfunctionReportForm: FormGroup;
+    malfunctionDescription: FormControl;
 
     constructor(
         private principal: Principal,
@@ -58,6 +63,9 @@ export class ConferenceRoomComponent implements OnInit {
         this.route.params.subscribe((params: Params) => this.getBuildigInfo(params['id']));
         this.route.snapshot.data['type'];
 
+        this.malfunctionReportForm = new FormGroup({
+            malfunctionDescription : new FormControl('', Validators.required)
+        });
         this.principal.identity().then((account) => {
             this.account = account;
         });
@@ -101,6 +109,7 @@ export class ConferenceRoomComponent implements OnInit {
             return false;
         }));
     }
+
     registerAuthenticationSuccess() {
         this.eventManager.subscribe('authenticationSuccess', (message) => {
             this.principal.identity().then((account) => {
@@ -123,6 +132,25 @@ export class ConferenceRoomComponent implements OnInit {
             (error) => {
                 console.log(error);
             }
+        )
+    }
+
+    showReport(){
+        if(this.displayReportEntry){this.displayReportEntry = !this.displayReportEntry;}
+        this.displayReport = !this.displayReport;
+    }
+
+    enterReport(){
+        if(this.displayReport){this.displayReport = !this.displayReport;}
+        this.displayReportEntry = !this.displayReportEntry;
+    }
+
+    submitReport(){
+        console.log("Malfunction Description: " + this.malfunctionReportForm.get("malfunctionDescription").value);
+        const data ={};
+        this.conferenceRoomService.postErrorReport(data).subscribe(
+            (response) => {console.log(response);},
+            (error) => {console.log(error)}
         )
     }
 

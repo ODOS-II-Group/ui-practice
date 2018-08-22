@@ -81,9 +81,68 @@
                 </dd>
             </dl>
 
+            <dl class="item-property">
+                <dt style="font-weight: 500;">REPORT</dt>
+                <dd style="display: inline;">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary d-inline" (click)="showReport()">
+                        Show Report
+                    </button>
+                </dd>
+                <dd style="display: inline;">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary d-inline" (click)="enterReport()">
+                        Enter Report
+                    </button>
+                </dd>
+            </dl>
+
+        </div>
+
+        <div class="col-lg-12" *ngIf="displayReport">
+            <br>
+            <h3>Malfunction Report</h3>
+            <br>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Description</th>
+                    <th scope="col">Flag</th>
+                    <th scope="col">Resolution</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let report of selectedRoom.equipmentReports">
+                    <td>{{ report["description"] }}</td>
+                    <td>{{ report["flag"] }}</td>
+                    <td>{{ report["resolution"] }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="col-lg-12" *ngIf="displayReportEntry">
+            <br>
+            <h3>Enter Report</h3>
+            <br>
+
+            <form [formGroup]="malfunctionReportForm">
+                <div class="form-group">
+                    <label for="malfunctionReport">Description of Malfunction</label>
+                    <textarea class="form-control" id="malfunctionReport" formControlName="malfunctionDescription" ></textarea>
+                </div>
+                <div class="form-button">
+                    <label for="submit_form_1">&nbsp;</label>
+                    <button  style="border-radius: 5px;" type="submit" class="btn btn-primary btn-sm" name="submit_form_1"
+                             (click)="submitReport()">Submit Report</button>
+                </div>
+            </form>
 
         </div>
 
     </div>
+
+
 
 </section>
